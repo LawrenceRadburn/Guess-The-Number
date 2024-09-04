@@ -2,6 +2,7 @@ const button1 = document.getElementById("btn-1")
 const button2 = document.getElementById("btn-2")
 const button3 = document.getElementById("btn-3")
 const hiddenNumber = document.getElementById("hidden-number");
+const reset = document.getElementById("reset");
 let displayScore = document.getElementById("display-score");
 displayScore.innerText = `Current Score: ${0}`;
 let score = 0;
@@ -124,3 +125,23 @@ function ifNumberMatchOrMismatch() {
     }
 
 }
+
+function resetGame() {
+    score = 0;
+    displayScore.innerText = `Current Score: ${score}`;
+    randomNumber = "";
+    guess = "";
+    hiddenNumber.innerText = "Hidden Number";
+    createFloatingTextCorrect("Game Reset");
+    console.log("Game has been reset");
+    
+    displayScore.classList.add('pulse-correct');
+    setTimeout(() => {
+        displayScore.classList.remove('pulse-correct');
+    }, 2000);
+    getRandomNumber();
+}
+
+reset.addEventListener("click", () => {
+    resetGame();
+});
